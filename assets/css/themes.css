@@ -1,0 +1,46 @@
+/* AIS Hospital - Visual Theme System
+   Supports 3 Healthcare Themes:
+   1. Medical Teal (Default) - #0F766E
+   2. Indian Medical Green - #15803D
+   3. Royal Medical Blue - #1D4ED8
+*/
+
+:root,
+[data-theme="teal"] {
+    --primary: #0F766E;
+    --primary-rgb: 15, 118, 110;
+    --primary-dark: #115E59;
+    --primary-light: #CCFBF1;
+    --primary-50: #F0FDFA;
+    --primary-100: #CCFBF1;
+    --primary-200: #99F6E4;
+    --primary-accent: #0D9488;
+    --primary-gradient: linear-gradient(135deg, #0F766E 0%, #115E59 100%);
+    --ring-focus: rgba(15, 118, 110, 0.35);
+}
+
+[data-theme="green"] {
+    --primary: #15803D;
+    --primary-rgb: 21, 128, 61;
+    --primary-dark: #166534;
+    --primary-light: #DCFCE7;
+    --primary-50: #F0FDF4;
+    --primary-100: #DCFCE7;
+    --primary-200: #BBF7D0;
+    --primary-accent: #16A34A;
+    --primary-gradient: linear-gradient(135deg, #15803D 0%, #166534 100%);
+    --ring-focus: rgba(21, 128, 61, 0.35);
+}
+
+[data-theme="blue"] {
+    --primary: #1D4ED8;
+    --primary-rgb: 29, 78, 216;
+    --primary-dark: #1E40AF;
+    --primary-light: #DBEAFE;
+    --primary-50: #EFF6FF;
+    --primary-100: #DBEAFE;
+    --primary-200: #BFDBFE;
+    --primary-accent: #2563EB;
+    --primary-gradient: linear-gradient(135deg, #1D4ED8 0%, #1E40AF 100%);
+    --ring-focus: rgba(29, 78, 216, 0.35);
+}

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="teal">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Services & Healthcare Packages — AIS Hospital</title>
+    <meta name="description" content="Explore comprehensive clinical services at AIS Hospital including 24×7 Emergency, ICU, Advanced Surgery, NABL Diagnostics, Radiology, and Health Checkups.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: 'var(--primary)',
+                            dark: 'var(--primary-dark)',
+                            light: 'var(--primary-light)',
+                            50: 'var(--primary-50)'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Manrope', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="assets/css/themes.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body data-page="services" class="bg-slate-50 text-slate-800 antialiased selection:bg-primary-100 selection:text-primary-dark">
+
+    <div id="emergency-bar-placeholder"></div>
+    <div id="header-placeholder"></div>
+
+    <main id="main-content">
+        <!-- Banner -->
+        <section class="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white py-14 border-b border-slate-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <nav class="flex items-center gap-2 text-xs text-slate-400 mb-3">
+                    <a href="index.html" class="hover:text-white">Home</a>
+                    <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                    <span class="text-white font-medium">Services</span>
+                </nav>
+                <div class="max-w-3xl">
+                    <span class="inline-block px-3 py-1 bg-primary text-white text-xs font-bold rounded-full mb-3 uppercase tracking-wider">
+                        Patient-Centric Healthcare
+                    </span>
+                    <h1 class="text-3xl sm:text-4xl font-extrabold font-heading text-white">Comprehensive Medical Services</h1>
+                    <p class="text-slate-300 text-sm mt-2">
+                        From round-the-clock emergency polytrauma care to preventive executive wellness screens, every department is integrated under one roof.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Grid -->
+        <section class="py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="services-grid">
+                    <!-- Populated via script -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Preventive Health Checkup Packages Section -->
+        <section class="py-20 bg-white border-y border-slate-200/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-14">
+                    <span class="text-xs font-bold text-primary uppercase tracking-wider block mb-1">Preventive Health</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 font-heading">Personalized Health Checkup Packages</h2>
+                    <p class="text-sm text-slate-600 mt-2">Early detection saves lives. Book our comprehensive lab and imaging packages with physician review.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="packages-grid">
+                    <!-- Populated via script -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Cashless Insurance Bar -->
+        <section class="py-12 bg-slate-900 text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+                <h3 class="text-xl font-bold font-heading">Cashless Hospitalization & Insurance Coverage</h3>
+                <p class="text-slate-400 text-xs sm:text-sm max-w-2xl mx-auto">
+                    We partner with Ayushman Bharat (PM-JAY), UP State Health Scheme, Star Health, ICICI Lombard, HDFC ERGO, Care Insurance, Max Bupa, and all leading TPAs for hassle-free cashless claims.
+                </p>
+                <div class="pt-2">
+                    <a href="contact.html" class="inline-flex items-center gap-1.5 text-primary-light hover:text-white font-semibold text-xs border-b border-primary-light/40 pb-0.5">
+                        Inquire at our TPA Insurance Helpdesk <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/components.js"></script>
+    <script src="assets/js/validation.js"></script>
+    <script src="assets/js/app.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const data = window.AIS_DATA;
+            const comp = window.AIS_COMPONENTS;
+
+            // Render Services
+            const servGrid = document.getElementById("services-grid");
+            if (servGrid && data && comp) {
+                servGrid.innerHTML = data.services.map(s => comp.renderServiceCard(s)).join("");
+            }
+
+            // Render Health Packages
+            const pkgGrid = document.getElementById("packages-grid");
+            if (pkgGrid && data) {
+                pkgGrid.innerHTML = data.healthPackages.map(p => `
+                    <div class="bg-white rounded-2xl border ${p.popular ? 'border-primary ring-2 ring-primary/20 shadow-lg' : 'border-slate-200/80 shadow-sm'} p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden">
+                        ${p.popular ? `
+                            <span class="absolute top-0 right-0 bg-primary text-white text-[10px] font-extrabold uppercase px-4 py-1 rounded-bl-xl tracking-wider">
+                                ${p.badge}
+                            </span>
+                        ` : ''}
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 font-heading mb-1">${p.name}</h3>
+                            <span class="text-xs text-primary font-bold block mb-4">${p.testsCount} Included</span>
+
+                            <div class="flex items-baseline gap-2 mb-6">
+                                <span class="text-3xl font-extrabold text-slate-900 font-heading">${p.price}</span>
+                                <span class="text-sm text-slate-400 line-through">${p.originalPrice}</span>
+                            </div>
+
+                            <ul class="text-xs text-slate-600 space-y-2.5 mb-8">
+                                ${p.tests.map(t => `
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                                        <span>${t}</span>
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
+
+                        <div>
+                            <a href="appointment.html?reason=${encodeURIComponent('Health Package - ' + p.name)}" 
+                               class="w-full inline-flex items-center justify-center gap-1.5 py-3 px-4 rounded-xl font-bold text-xs ${p.popular ? 'bg-primary hover:bg-primary-dark text-white shadow-md' : 'bg-slate-100 hover:bg-slate-200 text-slate-800'} transition">
+                                <i data-lucide="calendar" class="w-4 h-4"></i>
+                                <span>Book This Package</span>
+                            </a>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            if (window.lucide) window.lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

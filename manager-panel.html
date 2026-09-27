@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="teal">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Operations Manager — AIS Hospital (V2 Preview)</title>
+    <meta name="description" content="Visual frontend prototype of AIS Hospital Operations Manager Panel for tracking bed capacity, doctor schedules, department occupancy, and patient admissions.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: 'var(--primary)',
+                            dark: 'var(--primary-dark)',
+                            light: 'var(--primary-light)',
+                            50: 'var(--primary-50)'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Manrope', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="assets/css/themes.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body class="bg-slate-100 text-slate-800 antialiased min-h-screen flex flex-col">
+
+    <!-- Top Bar with V2 Notice -->
+    <header class="bg-slate-900 text-white py-2.5 px-4 sm:px-8 border-b border-slate-800 flex items-center justify-between text-xs">
+        <div class="flex items-center gap-3">
+            <a href="index.html" class="flex items-center gap-2 font-bold font-heading text-sm text-white hover:text-primary-light">
+                <div class="w-6 h-6 rounded bg-primary text-white flex items-center justify-center">
+                    <i data-lucide="cross" class="w-4 h-4"></i>
+                </div>
+                <span>AIS Hospital</span>
+            </a>
+            <span class="text-slate-600 hidden sm:inline">|</span>
+            <span class="px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-300 font-semibold text-[11px] border border-indigo-500/30">
+                Operations Manager (V2 Prototype)
+            </span>
+        </div>
+        <div class="flex items-center gap-4">
+            <span class="text-slate-300 hidden md:inline">Logged in as: <strong>Dr. R. K. Saxena (Medical Superintendent)</strong></span>
+            <a href="login.html" class="text-xs text-red-400 hover:text-red-300 font-semibold flex items-center gap-1">
+                <i data-lucide="log-out" class="w-3.5 h-3.5"></i> Exit Portal
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <div class="flex-1 flex flex-col md:flex-row">
+        <!-- Sidebar Navigation -->
+        <aside class="w-full md:w-64 bg-white border-r border-slate-200/80 p-4 space-y-6">
+            <div class="flex items-center gap-3 p-2 bg-slate-50 rounded-xl border border-slate-100">
+                <div class="w-10 h-10 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold text-sm">
+                    MS
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold text-slate-900">Dr. R. K. Saxena</h4>
+                    <span class="text-[11px] text-slate-500">Medical Administration</span>
+                </div>
+            </div>
+
+            <nav class="space-y-1 text-xs font-semibold">
+                <a href="#overview" class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-primary text-white">
+                    <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
+                    <span>Hospital Overview</span>
+                </a>
+                <a href="#appointments" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 hover:text-slate-900">
+                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                    <span>Online Appointments</span>
+                </a>
+                <a href="#doctors" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 hover:text-slate-900">
+                    <i data-lucide="stethoscope" class="w-4 h-4"></i>
+                    <span>Doctors & Duty Roster</span>
+                </a>
+                <a href="#departments" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 hover:text-slate-900">
+                    <i data-lucide="building" class="w-4 h-4"></i>
+                    <span>Department Metrics</span>
+                </a>
+                <a href="#patients" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 hover:text-slate-900">
+                    <i data-lucide="users" class="w-4 h-4"></i>
+                    <span>Bed Occupancy (350 Beds)</span>
+                </a>
+                <a href="#reports" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 hover:text-slate-900">
+                    <i data-lucide="file-text" class="w-4 h-4"></i>
+                    <span>NABH Audit Reports</span>
+                </a>
+            </nav>
+
+            <div class="p-3 bg-indigo-50 rounded-xl border border-indigo-200 text-[11px] text-indigo-900 space-y-1">
+                <span class="font-bold block">V2 — Coming Soon:</span>
+                <p>Full Hospital Information Management System (HIMS), Pharmacy Inventory, Cashless TPA Claims & Payroll will connect in V2.</p>
+            </div>
+        </aside>
+
+        <!-- Main Dashboard Area -->
+        <main class="flex-1 p-4 sm:p-8 space-y-8 overflow-y-auto">
+            <!-- Header Title -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                    <h1 class="text-2xl font-bold text-slate-900 font-heading">Hospital Administration Dashboard</h1>
+                    <p class="text-xs text-slate-500">Live Campus Census • 350 Licensed Tertiary Care Beds • Siddharthnagar</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button type="button" onclick="showToast('Exported daily operations report', 'info')" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold shadow">
+                        <i data-lucide="download" class="w-4 h-4"></i> Export Daily Census
+                    </button>
+                </div>
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm">
+                    <span class="text-xs text-slate-400 font-semibold block uppercase">Total Inpatient Beds</span>
+                    <span class="text-2xl font-extrabold text-slate-900 mt-1 block">294 / 350</span>
+                    <span class="text-[11px] text-primary font-bold">84% Occupancy</span>
+                </div>
+                <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm">
+                    <span class="text-xs text-slate-400 font-semibold block uppercase">Critical Care ICU Beds</span>
+                    <span class="text-2xl font-extrabold text-red-600 mt-1 block">54 / 60</span>
+                    <span class="text-[11px] text-red-600 font-medium">90% Full (6 ICU Beds Available)</span>
+                </div>
+                <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm">
+                    <span class="text-xs text-slate-400 font-semibold block uppercase">Surgeons & Doctors on Duty</span>
+                    <span class="text-2xl font-extrabold text-emerald-600 mt-1 block">42</span>
+                    <span class="text-[11px] text-slate-500 font-medium">14 Departments active</span>
+                </div>
+                <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm">
+                    <span class="text-xs text-slate-400 font-semibold block uppercase">ER Admissions Today</span>
+                    <span class="text-2xl font-extrabold text-amber-600 mt-1 block">28</span>
+                    <span class="text-[11px] text-amber-700 font-medium">Golden Hour STEMI: 3</span>
+                </div>
+            </div>
+
+            <!-- Online Appointments Feeder (Reads from localStorage in V1) -->
+            <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+                <div class="p-5 border-b border-slate-100 flex items-center justify-between">
+                    <div>
+                        <h3 class="text-base font-bold text-slate-900 font-heading">Recent Online Web Bookings (Frontend V1 Store)</h3>
+                        <p class="text-xs text-slate-500">Live feed of patient appointments scheduled via appointment.html</p>
+                    </div>
+                    <button type="button" onclick="loadManagerAppointments()" class="text-xs text-primary font-bold hover:underline flex items-center gap-1">
+                        <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i> Refresh
+                    </button>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs text-slate-600">
+                        <thead class="bg-slate-50 text-[11px] font-bold uppercase text-slate-400 border-b border-slate-100">
+                            <tr>
+                                <th class="p-4">Appt ID</th>
+                                <th class="p-4">Patient Name</th>
+                                <th class="p-4">Doctor</th>
+                                <th class="p-4">Department</th>
+                                <th class="p-4">Date & Slot</th>
+                                <th class="p-4">Mobile</th>
+                                <th class="p-4">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="manager-appointments-body" class="divide-y divide-slate-100">
+                            <!-- Populated dynamically via script -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Department Performance Overview -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-sm space-y-4">
+                    <h3 class="text-base font-bold text-slate-900 font-heading">Department Census Breakdown</h3>
+                    <div class="space-y-3 text-xs">
+                        <div>
+                            <div class="flex justify-between font-semibold mb-1">
+                                <span>Cardiology & Cath Lab</span>
+                                <span class="text-slate-900 font-bold">94% Capacity</span>
+                            </div>
+                            <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+                                <div class="bg-primary h-2 rounded-full" style="width: 94%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between font-semibold mb-1">
+                                <span>Orthopedics & Joint Care</span>
+                                <span class="text-slate-900 font-bold">88% Capacity</span>
+                            </div>
+                            <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+                                <div class="bg-primary h-2 rounded-full" style="width: 88%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between font-semibold mb-1">
+                                <span>Obstetrics & Gynecology</span>
+                                <span class="text-slate-900 font-bold">82% Capacity</span>
+                            </div>
+                            <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+                                <div class="bg-primary h-2 rounded-full" style="width: 82%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between font-semibold mb-1">
+                                <span>Pediatrics & Level-III NICU</span>
+                                <span class="text-slate-900 font-bold">78% Capacity</span>
+                            </div>
+                            <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+                                <div class="bg-primary h-2 rounded-full" style="width: 78%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-sm space-y-3">
+                    <h3 class="text-base font-bold text-slate-900 font-heading">Statutory & Compliance Alerts</h3>
+                    <div class="space-y-2 text-xs">
+                        <div class="p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 flex items-start gap-2">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                            <div>
+                                <span class="font-bold">NABH Quarterly Quality Audit: Passed</span>
+                                <p class="text-[11px] text-emerald-700">Surveillance audit completed with 98.4% clinical compliance rating.</p>
+                            </div>
+                        </div>
+                        <div class="p-3 rounded-xl bg-blue-50 border border-blue-200 text-blue-800 flex items-start gap-2">
+                            <i data-lucide="droplet" class="w-4 h-4 text-blue-600 shrink-0 mt-0.5"></i>
+                            <div>
+                                <span class="font-bold">Blood Bank Reserves Healthy</span>
+                                <p class="text-[11px] text-blue-700">O+ve, B+ve, and A+ve units exceed minimum critical threshold reserve.</p>
+                            </div>
+                        </div>
+                        <div class="p-3 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 flex items-start gap-2">
+                            <i data-lucide="alert-triangle" class="w-4 h-4 text-amber-600 shrink-0 mt-0.5"></i>
+                            <div>
+                                <span class="font-bold">Liquid Oxygen Tank Level at 72%</span>
+                                <p class="text-[11px] text-amber-700">Refill scheduled for tomorrow at 06:00 AM.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/components.js"></script>
+    <script>
+        function loadManagerAppointments() {
+            const body = document.getElementById("manager-appointments-body");
+            if (!body) return;
+
+            let records = [];
+            try {
+                records = JSON.parse(localStorage.getItem("ais_hospital_appointments") || "[]");
+            } catch (e) {
+                console.error(e);
+            }
+
+            // If empty, provide realistic demo rows
+            if (records.length === 0) {
+                records = [
+                    { id: "AIS-2026-84920", patientName: "Dinesh Kumar", doctor: "Dr. Vikram Singhania", department: "Cardiology", date: "2026-09-29", time: "10:00 AM", mobile: "9876543210", status: "Confirmed" },
+                    { id: "AIS-2026-61942", patientName: "Pooja Jaiswal", doctor: "Dr. Priya Patel", department: "Obstetrics & Gynecology", date: "2026-09-29", time: "11:30 AM", mobile: "9876543219", status: "Confirmed" },
+                    { id: "AIS-2026-53109", patientName: "Satish Chandra", doctor: "Dr. Rajeshwari Verma", department: "Orthopedics", date: "2026-09-30", time: "02:00 PM", mobile: "9876543218", status: "Confirmed" }
+                ];
+            }
+
+            body.innerHTML = records.slice(0, 8).map(r => `
+                <tr class="hover:bg-slate-50/80">
+                    <td class="p-4 font-mono font-bold text-primary">${r.id}</td>
+                    <td class="p-4 font-semibold text-slate-900">${r.patientName}</td>
+                    <td class="p-4">${r.doctor}</td>
+                    <td class="p-4">${r.department}</td>
+                    <td class="p-4">${r.date} (${r.time})</td>
+                    <td class="p-4 font-mono text-slate-500">${r.mobile}</td>
+                    <td class="p-4">
+                        <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-700 font-semibold text-[10px]">${r.status || 'Confirmed'}</span>
+                    </td>
+                </tr>
+            `).join("");
+
+            if (window.lucide) window.lucide.createIcons();
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            loadManagerAppointments();
+        });
+    </script>
+</body>
+</html>

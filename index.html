@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="teal">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIS Hospital — Advanced Care. Trusted Hands. | Tertiary Care Hospital</title>
+    <meta name="description" content="AIS Hospital is a leading NABH accredited tertiary care hospital providing comprehensive 24×7 emergency, cardiology, orthopedics, neurology, pediatrics, and surgical care.">
+    <meta property="og:title" content="AIS Hospital — Advanced Care. Trusted Hands.">
+    <meta property="og:description" content="Leading tertiary care hospital with 50+ super-specialists, modern ICU, robotic joint replacement, and 24×7 emergency trauma center.">
+    <meta property="og:type" content="website">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: 'var(--primary)',
+                            dark: 'var(--primary-dark)',
+                            light: 'var(--primary-light)',
+                            50: 'var(--primary-50)'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Manrope', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- AOS Animations & Themes -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="assets/css/themes.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body data-page="home" class="bg-slate-50 text-slate-800 antialiased selection:bg-primary-100 selection:text-primary-dark">
+
+    <!-- Emergency Information Bar -->
+    <div id="emergency-bar-placeholder"></div>
+
+    <!-- Navigation Header -->
+    <div id="header-placeholder"></div>
+
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="relative bg-gradient-to-b from-primary-50/60 via-white to-slate-50 pt-12 pb-20 overflow-hidden border-b border-slate-100">
+            <!-- Background Decorative Blobs -->
+            <div class="absolute -top-24 -right-24 w-96 h-96 bg-primary-light/40 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute top-1/2 -left-20 w-80 h-80 bg-emerald-100/40 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    <!-- Left Hero Content -->
+                    <div class="lg:col-span-7 space-y-6" data-aos="fade-right">
+                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary-50 border border-primary-light text-primary text-xs font-bold uppercase tracking-wider">
+                            <span class="w-2 h-2 rounded-full bg-primary"></span>
+                            NABH Accredited Tertiary Healthcare
+                        </div>
+
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 font-heading tracking-tight leading-[1.12]">
+                            Advanced Care. <br>
+                            <span class="text-primary">Trusted Hands.</span> <br>
+                            Closer to You.
+                        </h1>
+
+                        <p class="text-base sm:text-lg text-slate-600 max-w-xl leading-relaxed">
+                            Compassionate healthcare backed by 50+ experienced doctors, 60-bed modern ICU, advanced modular operation theatres, and 24×7 rapid trauma emergency response.
+                        </p>
+
+                        <!-- Hero Action Buttons -->
+                        <div class="flex flex-wrap items-center gap-4 pt-2">
+                            <a href="appointment.html" 
+                               class="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white font-bold text-base px-7 py-3.5 rounded-xl shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all transform hover:-translate-y-0.5">
+                                <i data-lucide="calendar" class="w-5 h-5"></i>
+                                <span>Book an Appointment</span>
+                            </a>
+                            <a href="doctors.html" 
+                               class="inline-flex items-center gap-2 bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 font-semibold text-base px-6 py-3.5 rounded-xl shadow-sm transition">
+                                <i data-lucide="search" class="w-5 h-5 text-slate-400"></i>
+                                <span>Explore Doctors</span>
+                            </a>
+                        </div>
+
+                        <!-- Trust Checkpoints -->
+                        <div class="pt-6 border-t border-slate-200/80 grid grid-cols-2 sm:grid-cols-3 gap-4 text-xs font-semibold text-slate-700">
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="shield-check" class="w-4 h-4 text-emerald-600 shrink-0"></i>
+                                <span>Cashless Insurance</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="clock" class="w-4 h-4 text-primary shrink-0"></i>
+                                <span>Instant Triage (<60s)</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="award" class="w-4 h-4 text-amber-500 shrink-0"></i>
+                                <span>NABL Lab Certified</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Hero Media & Floating Badges -->
+                    <div class="lg:col-span-5 relative" data-aos="fade-left">
+                        <div class="relative mx-auto max-w-md lg:max-w-none">
+                            <div class="rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-white">
+                                <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=900" 
+                                     alt="AIS Hospital Clinical Excellence" 
+                                     class="w-full h-[460px] object-cover">
+                            </div>
+
+                            <!-- Floating Card 1: 24/7 Emergency -->
+                            <div class="absolute -bottom-6 -left-6 sm:bottom-6 sm:-left-8 bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-xl bg-red-100 text-red-600 flex items-center justify-center shrink-0">
+                                    <i data-lucide="ambulance" class="w-6 h-6 animate-pulse"></i>
+                                </div>
+                                <div>
+                                    <span class="text-[11px] font-bold uppercase text-red-600 tracking-wider">Emergency Helpline</span>
+                                    <a href="tel:+919876543210" class="block font-bold text-slate-900 text-sm hover:text-red-600">+91 98765 43210</a>
+                                    <span class="text-[10px] text-slate-500">Ambulance dispatched in 5 mins</span>
+                                </div>
+                            </div>
+
+                            <!-- Floating Card 2: Satisfied Patients -->
+                            <div class="absolute -top-6 -right-4 sm:top-6 sm:-right-6 bg-white/95 backdrop-blur-md py-3 px-4 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
+                                    <i data-lucide="heart" class="w-5 h-5 fill-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <span class="font-extrabold text-slate-900 text-base">99.2%</span>
+                                    <span class="text-[11px] text-slate-500 block">Patient Satisfaction</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust Statistics Bar -->
+        <section class="bg-white py-12 border-b border-slate-200/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-slate-100">
+                    <div class="p-3" data-aos="fade-up" data-aos-delay="50">
+                        <span class="block text-3xl sm:text-4xl font-extrabold text-primary font-heading">25+</span>
+                        <span class="text-xs sm:text-sm font-semibold text-slate-600 uppercase tracking-wider mt-1 block">Years of Care</span>
+                    </div>
+                    <div class="p-3 pt-6 md:pt-3" data-aos="fade-up" data-aos-delay="100">
+                        <span class="block text-3xl sm:text-4xl font-extrabold text-primary font-heading">50+</span>
+                        <span class="text-xs sm:text-sm font-semibold text-slate-600 uppercase tracking-wider mt-1 block">Expert Doctors</span>
+                    </div>
+                    <div class="p-3 pt-6 md:pt-3" data-aos="fade-up" data-aos-delay="150">
+                        <span class="block text-3xl sm:text-4xl font-extrabold text-primary font-heading">20+</span>
+                        <span class="text-xs sm:text-sm font-semibold text-slate-600 uppercase tracking-wider mt-1 block">Clinical Specialties</span>
+                    </div>
+                    <div class="p-3 pt-6 md:pt-3" data-aos="fade-up" data-aos-delay="200">
+                        <span class="block text-3xl sm:text-4xl font-extrabold text-primary font-heading">1L+</span>
+                        <span class="text-xs sm:text-sm font-semibold text-slate-600 uppercase tracking-wider mt-1 block">Patients Served</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick 24/7 Emergency Notification Callout -->
+        <section class="bg-red-600 text-white py-4 px-4 shadow-inner">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3 text-center md:text-left">
+                    <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center shrink-0">
+                        <i data-lucide="alert-triangle" class="w-5 h-5 text-white"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-sm tracking-wide">Critical Medical Emergency or Accident?</h4>
+                        <p class="text-xs text-red-100">Our Emergency Trauma Team, ICU Specialists, and Cath Lab operate 24 hours without break.</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <a href="tel:+919876543210" class="inline-flex items-center gap-2 bg-white text-red-700 hover:bg-red-50 font-bold text-xs sm:text-sm px-5 py-2.5 rounded-xl shadow transition">
+                        <i data-lucide="phone-call" class="w-4 h-4"></i>
+                        <span>Call +91 98765 43210</span>
+                    </a>
+                    <a href="emergency.html" class="inline-flex items-center gap-1.5 text-xs text-white underline hover:text-red-200 font-semibold px-2 py-1">
+                        Emergency Guide
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Clinical Departments Section -->
+        <section class="py-20 bg-slate-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                    <div>
+                        <span class="text-xs font-bold text-primary uppercase tracking-wider block mb-1">Centres of Excellence</span>
+                        <h2 class="text-3xl font-extrabold text-slate-900 font-heading">Specialized Clinical Departments</h2>
+                        <p class="text-sm text-slate-600 max-w-xl mt-2">Equipped with cutting-edge medical diagnostic technologies and headed by experienced clinicians.</p>
+                    </div>
+                    <a href="departments.html" class="mt-4 md:mt-0 inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-primary-dark group">
+                        <span>Explore All 14 Departments</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+
+                <!-- 6 Featured Departments Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="home-featured-departments">
+                    <!-- Populated via script for consistency -->
+                </div>
+            </div>
+        </section>
+
+        <!-- About Hospital Section -->
+        <section class="py-20 bg-white border-y border-slate-200/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    <div class="lg:col-span-6 relative" data-aos="fade-right">
+                        <div class="relative rounded-3xl overflow-hidden shadow-xl border-4 border-slate-50">
+                            <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800" 
+                                 alt="AIS Hospital Campus" 
+                                 class="w-full h-[450px] object-cover">
+                        </div>
+                        <div class="absolute -bottom-6 right-6 bg-primary text-white p-6 rounded-2xl shadow-xl max-w-xs hidden sm:block">
+                            <span class="text-3xl font-extrabold font-heading block">350+</span>
+                            <span class="text-xs text-primary-light font-medium">Beds Capacity with dedicated Level-III ICUs and private suites</span>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-6 space-y-6" data-aos="fade-left">
+                        <span class="text-xs font-bold text-primary uppercase tracking-wider block">About AIS Hospital</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 font-heading leading-tight">
+                            Redefining Healthcare with Compassion, Technology & Trust
+                        </h2>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Established with the visionary mission to bring metropolitan-grade medical care to the heart of Uttar Pradesh, AIS Hospital has grown into a premier healthcare sanctuary trusted by over 1,00,000 families across the region.
+                        </p>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            From robotic joint replacements and 24×7 cardiac catheterization to high-risk maternity care and neonatal intensive care, we uphold uncompromising clinical ethics and patient-first affordability.
+                        </p>
+
+                        <!-- 4 Core Pillars -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-100 flex items-start gap-3">
+                                <div class="w-8 h-8 rounded-lg bg-primary-50 text-primary flex items-center justify-center shrink-0">
+                                    <i data-lucide="user-check" class="w-4 h-4"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-xs text-slate-900">Patient-First Care</h4>
+                                    <p class="text-[11px] text-slate-500 mt-0.5">Empathetic bedside nursing and transparent treatment plans.</p>
+                                </div>
+                            </div>
+                            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-100 flex items-start gap-3">
+                                <div class="w-8 h-8 rounded-lg bg-primary-50 text-primary flex items-center justify-center shrink-0">
+                                    <i data-lucide="cpu" class="w-4 h-4"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-xs text-slate-900">Modern Technology</h4>
+                                    <p class="text-[11px] text-slate-500 mt-0.5">1.5T MRI, 128-Slice CT, 4K Laparoscopy & Robotic Joint Care.</p>
+                                </div>
+                            </div>
+                            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-100 flex items-start gap-3">
+                                <div class="w-8 h-8 rounded-lg bg-primary-50 text-primary flex items-center justify-center shrink-0">
+                                    <i data-lucide="shield" class="w-4 h-4"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-xs text-slate-900">Zero Infection Goal</h4>
+                                    <p class="text-[11px] text-slate-500 mt-0.5">HEPA-filtered laminar airflow operation theatres.</p>
+                                </div>
+                            </div>
+                            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-100 flex items-start gap-3">
+                                <div class="w-8 h-8 rounded-lg bg-primary-50 text-primary flex items-center justify-center shrink-0">
+                                    <i data-lucide="badge-percent" class="w-4 h-4"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-xs text-slate-900">Fair Pricing</h4>
+                                    <p class="text-[11px] text-slate-500 mt-0.5">Ayushman PM-JAY & major insurance cashless empanelment.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pt-2">
+                            <a href="about.html" 
+                               class="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm px-6 py-3 rounded-xl transition">
+                                <span>Know More About AIS Hospital</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Doctors Section -->
+        <section class="py-20 bg-slate-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                    <div>
+                        <span class="text-xs font-bold text-primary uppercase tracking-wider block mb-1">Meet Our Specialists</span>
+                        <h2 class="text-3xl font-extrabold text-slate-900 font-heading">Experienced Clinical Consultants</h2>
+                        <p class="text-sm text-slate-600 max-w-xl mt-2">Trained at premier medical institutes including AIIMS, KGMU, CMC Vellore, and PGIMER.</p>
+                    </div>
+                    <a href="doctors.html" class="mt-4 md:mt-0 inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-primary-dark group">
+                        <span>View All Consultants</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+
+                <!-- Featured Doctors Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="home-featured-doctors">
+                    <!-- Populated via script -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Facilities Highlight Section -->
+        <section class="py-20 bg-white border-y border-slate-200/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-14">
+                    <span class="text-xs font-bold text-primary uppercase tracking-wider block mb-1">World-Class Infrastructure</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 font-heading">Modern Facilities & Diagnostic Wings</h2>
+                    <p class="text-sm text-slate-600 mt-2">Engineered to international healthcare benchmarks for patient safety, sterile environments, and prompt recovery.</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="home-featured-facilities">
+                    <!-- Populated via script -->
+                </div>
+
+                <div class="text-center mt-10">
+                    <a href="facilities.html" class="inline-flex items-center gap-2 text-sm font-bold text-slate-700 hover:text-primary border border-slate-300 bg-white px-6 py-2.5 rounded-xl shadow-sm transition">
+                        <span>Explore All Hospital Facilities & OTs</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Patient Testimonials Section -->
+        <section class="py-20 bg-slate-900 text-slate-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-14">
+                    <span class="text-xs font-bold text-primary-light uppercase tracking-wider block mb-1">Patient Stories</span>
+                    <h2 class="text-3xl font-extrabold text-white font-heading">Restoring Health, Building Trust</h2>
+                    <p class="text-sm text-slate-400 mt-2">Real testimonials from patients and families whose lives were touched by AIS Hospital doctors.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="home-testimonials-grid">
+                    <!-- Populated via script -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Latest Articles / Health Library Teaser -->
+        <section class="py-20 bg-slate-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                    <div>
+                        <span class="text-xs font-bold text-primary uppercase tracking-wider block mb-1">Health Insights</span>
+                        <h2 class="text-3xl font-extrabold text-slate-900 font-heading">Doctor-Authored Health Guides</h2>
+                        <p class="text-sm text-slate-600 max-w-xl mt-2">Evidence-based advice to help you and your family make informed healthcare decisions.</p>
+                    </div>
+                    <a href="health-library.html" class="mt-4 md:mt-0 inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-primary-dark group">
+                        <span>Visit Health Library</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="home-articles-grid">
+                    <!-- Populated via script -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Appointment CTA Banner -->
+        <section class="bg-primary text-white py-16 relative overflow-hidden">
+            <div class="absolute -right-16 -bottom-16 w-80 h-80 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-6">
+                <h2 class="text-3xl sm:text-4xl font-extrabold font-heading">Ready to Prioritize Your Health?</h2>
+                <p class="text-primary-50 max-w-xl mx-auto text-base">
+                    Skip long registration queues. Book your specialist consultation online in just 2 minutes.
+                </p>
+                <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
+                    <a href="appointment.html" 
+                       class="inline-flex items-center gap-2 bg-white text-slate-900 hover:bg-slate-100 font-bold px-8 py-3.5 rounded-xl shadow-lg transition">
+                        <i data-lucide="calendar" class="w-5 h-5 text-primary"></i>
+                        <span>Book An Appointment Now</span>
+                    </a>
+                    <a href="tel:+9118001234567" 
+                       class="inline-flex items-center gap-2 bg-primary-dark hover:bg-primary-dark/80 text-white font-semibold px-6 py-3.5 rounded-xl border border-white/20 transition">
+                        <i data-lucide="phone" class="w-5 h-5"></i>
+                        <span>Call OPD Helpline: 1800 123 4567</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Global Footer -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/components.js"></script>
+    <script src="assets/js/validation.js"></script>
+    <script src="assets/js/app.js"></script>
+
+    <!-- Homepage Specific Data Bindings -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const data = window.AIS_DATA;
+            const comp = window.AIS_COMPONENTS;
+
+            // Render 6 Featured Departments
+            const deptContainer = document.getElementById("home-featured-departments");
+            if (deptContainer && data && comp) {
+                const featuredDepts = data.departments.slice(0, 6);
+                deptContainer.innerHTML = featuredDepts.map(d => comp.renderDepartmentCard(d)).join("");
+            }
+
+            // Render 4 Featured Doctors
+            const docContainer = document.getElementById("home-featured-doctors");
+            if (docContainer && data && comp) {
+                const featuredDocs = data.doctors.slice(0, 4);
+                docContainer.innerHTML = featuredDocs.map(d => comp.renderDoctorCard(d)).join("");
+            }
+
+            // Render 4 Facilities
+            const facContainer = document.getElementById("home-featured-facilities");
+            if (facContainer && data && comp) {
+                const featuredFacs = data.facilities.slice(0, 4);
+                facContainer.innerHTML = featuredFacs.map(f => comp.renderFacilityCard(f)).join("");
+            }
+
+            // Render Testimonials
+            const testContainer = document.getElementById("home-testimonials-grid");
+            if (testContainer && data) {
+                testContainer.innerHTML = data.testimonials.slice(0, 3).map(t => `
+                    <div class="bg-slate-800/80 border border-slate-700/80 p-6 rounded-2xl flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <div class="flex items-center gap-1 text-amber-400">
+                                ${Array(t.rating).fill('<i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>').join('')}
+                            </div>
+                            <p class="text-xs sm:text-sm text-slate-300 italic leading-relaxed">"${t.review}"</p>
+                        </div>
+                        <div class="pt-4 mt-4 border-t border-slate-700 text-xs">
+                            <h5 class="font-bold text-white font-heading">${t.name}</h5>
+                            <span class="text-slate-400 block">${t.location}</span>
+                            <span class="text-primary-light font-medium block mt-0.5">Treated in ${t.department} (${t.doctor})</span>
+                        </div>
+                    </div>
+                `).join("");
+            }
+
+            // Render Articles
+            const artContainer = document.getElementById("home-articles-grid");
+            if (artContainer && data && comp) {
+                artContainer.innerHTML = data.articles.slice(0, 3).map(a => comp.renderArticleCard(a)).join("");
+            }
+
+            if (window.lucide) window.lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

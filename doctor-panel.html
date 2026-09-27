@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="teal">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Portal Prototype — AIS Hospital (V2 Preview)</title>
+    <meta name="description" content="Visual frontend prototype of AIS Hospital Doctor Panel for managing daily appointments, patient queues, and clinical consultations.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: 'var(--primary)',
+                            dark: 'var(--primary-dark)',
+                            light: 'var(--primary-light)',
+                            50: 'var(--primary-50)'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Manrope', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="assets/css/themes.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body class="bg-slate-100 text-slate-800 antialiased min-h-screen flex flex-col">
+
+    <!-- Top Bar with V2 Notice -->
+    <header class="bg-slate-900 text-white py-2.5 px-4 sm:px-8 border-b border-slate-800 flex items-center justify-between text-xs">
+        <div class="flex items-center gap-3">
+            <a href="index.html" class="flex items-center gap-2 font-bold font-heading text-sm text-white hover:text-primary-light">
+                <div class="w-6 h-6 rounded bg-primary text-white flex items-center justify-center">
+                    <i data-lucide="cross" class="w-4 h-4"></i>
+                </div>
+                <span>AIS Hospital</span>
+            </a>
+            <span class="text-slate-600 hidden sm:inline">|</span>
+            <span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 font-semibold text-[11px] border border-amber-500/30">
+                Doctor Console (V2 Prototype)
+            </span>
+        </div>
+        <div class="flex items-center gap-4">
+            <span class="text-slate-300 hidden md:inline">Logged in as: <strong>Dr. Aarav Sharma (Consultant)</strong></span>
+            <a href="login.html" class="text-xs text-red-400 hover:text-red-300 font-semibold flex items-center gap-1">
+                <i data-lucide="log-out" class="w-3.5 h-3.5"></i> Exit Portal
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <div class="flex-1 flex flex-col md:flex-row">
+        <!-- Sidebar Navigation -->
+        <aside class="w-full md:w-64 bg-white border-r border-slate-200/80 p-4 space-y-6">
+            <div class="flex items-center gap-3 p-2 bg-slate-50 rounded-xl border border-slate-100">
+                <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=200" 
+                     alt="Dr. Aarav Sharma" class="w-10 h-10 rounded-full object-cover">
+                <div>
+                    <h4 class="text-xs font-bold text-slate-900">Dr. Aarav Sharma</h4>
+                    <span class="text-[11px] text-slate-500">General Medicine</span>
+                </div>
+            </div>
+
+            <nav class="space-y-1 text-xs font-semibold">
+                <a href="#appointments" class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-primary text-white">
+                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                    <span>Today's Appointments</span>
+                </a>
+                <a href="#patients" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 hover:text-slate-900">
+                    <i data-lucide="users" class="w-4 h-4"></i>
+                    <span>Patient Queue (6)</span>
+                </a>
+                <a href="#schedule" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 hover:text-slate-900">
+                    <i data-lucide="clock" class="w-4 h-4"></i>
+                    <span>OPD & Ward Schedule</span>
+                </a>
+                <a href="#notifications" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 hover:text-slate-900">
+                    <i data-lucide="bell" class="w-4 h-4"></i>
+                    <span>Critical Lab Alerts (2)</span>
+                </a>
+                <a href="#profile" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 hover:text-slate-900">
+                    <i data-lucide="user" class="w-4 h-4"></i>
+                    <span>Doctor Profile Settings</span>
+                </a>
+            </nav>
+
+            <div class="p-3 bg-primary-50 rounded-xl border border-primary-light text-[11px] text-slate-600 space-y-1">
+                <span class="font-bold text-primary block">V2 Architecture:</span>
+                <p>This module connects to the doctor consultation queue, electronic medical records (EMR), and digital Rx dispenser in V2.</p>
+            </div>
+        </aside>
+
+        <!-- Main Dashboard Area -->
+        <main class="flex-1 p-4 sm:p-8 space-y-8 overflow-y-auto">
+            <!-- Header Greeting -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                    <h1 class="text-2xl font-bold text-slate-900 font-heading">Consultant OPD Dashboard</h1>
+                    <p class="text-xs text-slate-500">OPD Room #104 • Chamber A • Session: Morning (09:00 AM - 01:00 PM)</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button type="button" onclick="showToast('Calling Next Token #08', 'info')" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-primary hover:bg-primary-dark text-white text-xs font-semibold shadow">
+                        <i data-lucide="volume-2" class="w-4 h-4"></i> Call Next Token
+                    </button>
+                </div>
+            </div>
+
+            <!-- Dashboard Stats Metrics -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm">
+                    <span class="text-xs text-slate-400 font-semibold block uppercase">Today's Bookings</span>
+                    <span class="text-2xl font-extrabold text-slate-900 mt-1 block">18</span>
+                    <span class="text-[11px] text-emerald-600 font-medium">100% capacity</span>
+                </div>
+                <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm">
+                    <span class="text-xs text-slate-400 font-semibold block uppercase">Pending in Queue</span>
+                    <span class="text-2xl font-extrabold text-amber-600 mt-1 block">06</span>
+                    <span class="text-[11px] text-slate-500 font-medium">Avg wait: 12 mins</span>
+                </div>
+                <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm">
+                    <span class="text-xs text-slate-400 font-semibold block uppercase">Completed</span>
+                    <span class="text-2xl font-extrabold text-emerald-600 mt-1 block">12</span>
+                    <span class="text-[11px] text-slate-500 font-medium">Prescriptions filed</span>
+                </div>
+                <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm">
+                    <span class="text-xs text-slate-400 font-semibold block uppercase">Emergency Reviews</span>
+                    <span class="text-2xl font-extrabold text-red-600 mt-1 block">02</span>
+                    <span class="text-[11px] text-red-500 font-medium">ICU Bed #12, #18</span>
+                </div>
+            </div>
+
+            <!-- Patient Queue Table -->
+            <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+                <div class="p-5 border-b border-slate-100 flex items-center justify-between">
+                    <div>
+                        <h3 class="text-base font-bold text-slate-900 font-heading">Today's OPD Patient Queue</h3>
+                        <p class="text-xs text-slate-500">Live consultation queue ordered by token appointment times</p>
+                    </div>
+                    <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-100 text-slate-700">6 Remaining</span>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs text-slate-600">
+                        <thead class="bg-slate-50 text-[11px] font-bold uppercase text-slate-400 border-b border-slate-100">
+                            <tr>
+                                <th class="p-4">Token #</th>
+                                <th class="p-4">Patient Name</th>
+                                <th class="p-4">Age / Gender</th>
+                                <th class="p-4">Slot</th>
+                                <th class="p-4">Chief Complaint</th>
+                                <th class="p-4">Status</th>
+                                <th class="p-4 text-right">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr class="hover:bg-slate-50/80">
+                                <td class="p-4 font-mono font-bold text-primary">#08</td>
+                                <td class="p-4 font-semibold text-slate-900">Rameshwar Prasad</td>
+                                <td class="p-4">58 / M</td>
+                                <td class="p-4">11:00 AM</td>
+                                <td class="p-4">Uncontrolled FBS (240 mg/dL), Foot numbness</td>
+                                <td class="p-4"><span class="px-2 py-0.5 rounded bg-amber-100 text-amber-700 font-semibold text-[10px]">Waiting</span></td>
+                                <td class="p-4 text-right">
+                                    <button type="button" onclick="showToast('Starting consultation with Rameshwar Prasad', 'info')" class="px-3 py-1.5 rounded-lg bg-primary text-white font-semibold text-[11px] hover:bg-primary-dark">
+                                        Start Consult
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/80">
+                                <td class="p-4 font-mono font-bold text-primary">#09</td>
+                                <td class="p-4 font-semibold text-slate-900">Sunita Devi</td>
+                                <td class="p-4">46 / F</td>
+                                <td class="p-4">11:30 AM</td>
+                                <td class="p-4">Follow-up: Thyroid Profile review</td>
+                                <td class="p-4"><span class="px-2 py-0.5 rounded bg-amber-100 text-amber-700 font-semibold text-[10px]">Waiting</span></td>
+                                <td class="p-4 text-right">
+                                    <button type="button" onclick="showToast('Patient marked in waiting lobby', 'info')" class="px-3 py-1.5 rounded-lg bg-slate-100 text-slate-700 font-semibold text-[11px] hover:bg-slate-200">
+                                        View File
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/80">
+                                <td class="p-4 font-mono font-bold text-primary">#10</td>
+                                <td class="p-4 font-semibold text-slate-900">Mohd. Farooq</td>
+                                <td class="p-4">62 / M</td>
+                                <td class="p-4">12:00 PM</td>
+                                <td class="p-4">Chest heaviness on stairs (ECG pending)</td>
+                                <td class="p-4"><span class="px-2 py-0.5 rounded bg-cyan-100 text-cyan-700 font-semibold text-[10px]">In Triage</span></td>
+                                <td class="p-4 text-right">
+                                    <button type="button" onclick="showToast('ECG flagged for review', 'info')" class="px-3 py-1.5 rounded-lg bg-slate-100 text-slate-700 font-semibold text-[11px] hover:bg-slate-200">
+                                        View ECG
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/80">
+                                <td class="p-4 font-mono font-bold text-slate-400">#07</td>
+                                <td class="p-4 font-semibold text-slate-900">Kavita S. Verma</td>
+                                <td class="p-4">39 / F</td>
+                                <td class="p-4">10:30 AM</td>
+                                <td class="p-4">Routine Diabetes follow-up</td>
+                                <td class="p-4"><span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-700 font-semibold text-[10px]">Completed</span></td>
+                                <td class="p-4 text-right">
+                                    <span class="text-[11px] text-slate-400">Rx Printed</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/components.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            if (window.lucide) window.lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

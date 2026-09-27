@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="teal">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facilities & Infrastructure — AIS Hospital | Modern Medical Architecture</title>
+    <meta name="description" content="Explore AIS Hospital's advanced medical infrastructure: 60-bed ICU, 8 modular operation theatres, 1.5T MRI, Cath Lab, 24×7 automated lab, and patient suites.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: 'var(--primary)',
+                            dark: 'var(--primary-dark)',
+                            light: 'var(--primary-light)',
+                            50: 'var(--primary-50)'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Manrope', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="assets/css/themes.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body data-page="facilities" class="bg-slate-50 text-slate-800 antialiased selection:bg-primary-100 selection:text-primary-dark">
+
+    <div id="emergency-bar-placeholder"></div>
+    <div id="header-placeholder"></div>
+
+    <main id="main-content">
+        <!-- Banner -->
+        <section class="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white py-14 border-b border-slate-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <nav class="flex items-center gap-2 text-xs text-slate-400 mb-3">
+                    <a href="index.html" class="hover:text-white">Home</a>
+                    <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                    <span class="text-white font-medium">Facilities</span>
+                </nav>
+                <div class="max-w-3xl">
+                    <span class="inline-block px-3 py-1 bg-primary text-white text-xs font-bold rounded-full mb-3 uppercase tracking-wider">
+                        Infrastructure Benchmark
+                    </span>
+                    <h1 class="text-3xl sm:text-4xl font-extrabold font-heading text-white">Advanced Medical Infrastructure</h1>
+                    <p class="text-slate-300 text-sm mt-2">
+                        Designed according to international NABH infection control specifications, ensuring clean, serene, and technologically superior healing spaces.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Facilities Grid -->
+        <section class="py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="facilities-grid">
+                    <!-- Populated via script -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Infection Control & Safety Measures -->
+        <section class="py-16 bg-white border-t border-slate-200/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100 space-y-3">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center">
+                            <i data-lucide="shield-check" class="w-5 h-5"></i>
+                        </div>
+                        <h4 class="text-base font-bold text-slate-900 font-heading">HEPA Laminar Airflow OTs</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Continuous positive air pressure with 0.3 micron particulate filters ensuring near-zero surgical site infection rates across all major procedures.
+                        </p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100 space-y-3">
+                        <div class="w-10 h-10 rounded-xl bg-cyan-100 text-cyan-700 flex items-center justify-center">
+                            <i data-lucide="activity" class="w-5 h-5"></i>
+                        </div>
+                        <h4 class="text-base font-bold text-slate-900 font-heading">Central Medical Gas Pipeline (MGPS)</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Redundant liquid oxygen tanks and computerized fail-safe pressure regulators delivering medical gases directly to every ICU and ward bed.
+                        </p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100 space-y-3">
+                        <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center">
+                            <i data-lucide="battery-charging" class="w-5 h-5"></i>
+                        </div>
+                        <h4 class="text-base font-bold text-slate-900 font-heading">100% Uninterrupted Power Backup</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Dual high-capacity online UPS systems and silent diesel generators ensuring zero power flicker to ventilators, surgical lasers, and monitors.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/components.js"></script>
+    <script src="assets/js/validation.js"></script>
+    <script src="assets/js/app.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const data = window.AIS_DATA;
+            const comp = window.AIS_COMPONENTS;
+
+            const grid = document.getElementById("facilities-grid");
+            if (grid && data && comp) {
+                grid.innerHTML = data.facilities.map(f => comp.renderFacilityCard(f)).join("");
+            }
+            if (window.lucide) window.lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

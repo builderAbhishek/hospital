@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="teal">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinical Departments — AIS Hospital | Specialized Healthcare Wings</title>
+    <meta name="description" content="Explore 14 specialized medical departments at AIS Hospital including Cardiology, Orthopedics, Neurology, General Medicine, Pediatrics, Gynecology, and Emergency Care.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: 'var(--primary)',
+                            dark: 'var(--primary-dark)',
+                            light: 'var(--primary-light)',
+                            50: 'var(--primary-50)'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Manrope', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="assets/css/themes.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body data-page="departments" class="bg-slate-50 text-slate-800 antialiased selection:bg-primary-100 selection:text-primary-dark">
+
+    <div id="emergency-bar-placeholder"></div>
+    <div id="header-placeholder"></div>
+
+    <main id="main-content">
+        <!-- Header Banner -->
+        <section class="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white py-14 border-b border-slate-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <nav class="flex items-center gap-2 text-xs text-slate-400 mb-3">
+                    <a href="index.html" class="hover:text-white">Home</a>
+                    <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                    <span class="text-white font-medium">Departments</span>
+                </nav>
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                    <div>
+                        <h1 class="text-3xl sm:text-4xl font-extrabold font-heading text-white">Centres of Clinical Excellence</h1>
+                        <p class="text-slate-300 text-sm mt-2 max-w-xl">
+                            14 multi-specialty clinical wings powered by experienced consultants, dedicated ICUs, and cutting-edge medical technologies.
+                        </p>
+                    </div>
+
+                    <!-- Search Input Box -->
+                    <div class="w-full md:w-80">
+                        <div class="relative">
+                            <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
+                            <input type="text" 
+                                   id="department-search-input" 
+                                   placeholder="Search department or specialty..." 
+                                   class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white placeholder-slate-400 text-xs focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Departments Grid -->
+        <section class="py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="departments-grid">
+                    <!-- Populated dynamically via app.js -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Emergency Support Strip -->
+        <section class="bg-primary-50 py-10 border-t border-primary-light/60">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3 text-center sm:text-left">
+                    <div class="w-12 h-12 rounded-xl bg-primary text-white flex items-center justify-center shrink-0">
+                        <i data-lucide="phone-call" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 text-sm font-heading">Not sure which department you should consult?</h4>
+                        <p class="text-xs text-slate-600">Call our central OPD triage desk for medical guidance and slot booking.</p>
+                    </div>
+                </div>
+                <a href="tel:+9118001234567" class="bg-primary hover:bg-primary-dark text-white font-bold text-xs px-6 py-3 rounded-xl shadow transition">
+                    Call OPD Helpline: 1800 123 4567
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/components.js"></script>
+    <script src="assets/js/validation.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

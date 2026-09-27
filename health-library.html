@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="teal">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Library & Medical Insights — AIS Hospital</title>
+    <meta name="description" content="Evidence-based health articles and doctor guides on heart wellness, hypertension, joint health, diabetes reversal, and maternal care by AIS Hospital specialists.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: 'var(--primary)',
+                            dark: 'var(--primary-dark)',
+                            light: 'var(--primary-light)',
+                            50: 'var(--primary-50)'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Manrope', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="assets/css/themes.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body data-page="health-library" class="bg-slate-50 text-slate-800 antialiased selection:bg-primary-100 selection:text-primary-dark">
+
+    <div id="emergency-bar-placeholder"></div>
+    <div id="header-placeholder"></div>
+
+    <main id="main-content">
+        <!-- Banner -->
+        <section class="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white py-14 border-b border-slate-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <nav class="flex items-center gap-2 text-xs text-slate-400 mb-3">
+                    <a href="index.html" class="hover:text-white">Home</a>
+                    <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                    <span class="text-white font-medium">Health Library</span>
+                </nav>
+                <div class="max-w-3xl">
+                    <span class="inline-block px-3 py-1 bg-primary text-white text-xs font-bold rounded-full mb-3 uppercase tracking-wider">
+                        Doctor-Authored Guides
+                    </span>
+                    <h1 class="text-3xl sm:text-4xl font-extrabold font-heading text-white">Patient Health Education Library</h1>
+                    <p class="text-slate-300 text-sm mt-2">
+                        Reliable, medically verified advice written by our senior hospital consultants to keep you and your loved ones in peak health.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search & Filter Controls -->
+        <section class="bg-white border-b border-slate-200/80 py-4 sticky top-20 z-30 shadow-sm">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+                <!-- Category Filter Tabs -->
+                <div class="flex items-center gap-2 overflow-x-auto pb-1 max-w-full scrollbar-none">
+                    <button type="button" data-category="All" class="library-filter-tab px-3.5 py-1.5 rounded-xl text-xs font-bold transition bg-primary text-white shrink-0">
+                        All Articles
+                    </button>
+                    <button type="button" data-category="Heart Health" class="library-filter-tab px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:text-primary transition shrink-0">
+                        Heart Health
+                    </button>
+                    <button type="button" data-category="General Health" class="library-filter-tab px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:text-primary transition shrink-0">
+                        General Health
+                    </button>
+                    <button type="button" data-category="Orthopedics" class="library-filter-tab px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:text-primary transition shrink-0">
+                        Joints & Bones
+                    </button>
+                    <button type="button" data-category="Diabetes & Endocrinology" class="library-filter-tab px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:text-primary transition shrink-0">
+                        Diabetes
+                    </button>
+                    <button type="button" data-category="Emergency Medicine" class="library-filter-tab px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:text-primary transition shrink-0">
+                        Emergency
+                    </button>
+                    <button type="button" data-category="Mother & Child Care" class="library-filter-tab px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:text-primary transition shrink-0">
+                        Mother & Child
+                    </button>
+                </div>
+
+                <!-- Search Input -->
+                <div class="relative w-full md:w-72">
+                    <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
+                    <input type="text" 
+                           id="article-search-input" 
+                           placeholder="Search medical topic..." 
+                           class="w-full pl-10 pr-4 py-2 rounded-xl border border-slate-200 text-xs text-slate-800 placeholder-slate-400 bg-slate-50 focus:outline-none focus:border-primary focus:bg-white">
+                </div>
+            </div>
+        </section>
+
+        <!-- Articles Grid -->
+        <section class="py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="articles-grid">
+                    <!-- Populated dynamically via app.js -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Article Reader Modal Dialog -->
+        <dialog id="article-reader-modal" class="p-0 rounded-2xl shadow-2xl backdrop:bg-slate-900/60 max-w-2xl w-full mx-auto my-auto overflow-hidden border border-slate-200">
+            <div class="bg-white max-h-[85vh] flex flex-col">
+                <div class="p-4 sm:p-6 border-b border-slate-100 flex items-center justify-between sticky top-0 bg-white z-10">
+                    <span id="modal-category" class="text-xs font-bold text-primary uppercase tracking-wider"></span>
+                    <button type="button" onclick="document.getElementById('article-reader-modal').close()" class="p-2 text-slate-400 hover:text-slate-700 rounded-lg">
+                        <i data-lucide="x" class="w-5 h-5"></i>
+                    </button>
+                </div>
+                <div class="p-6 sm:p-8 overflow-y-auto space-y-4">
+                    <h2 id="modal-title" class="text-2xl font-bold text-slate-900 font-heading"></h2>
+                    <div class="flex items-center gap-2 text-xs text-slate-400 pb-3 border-b border-slate-100">
+                        <span id="modal-date"></span>
+                        <span>•</span>
+                        <span id="modal-author"></span>
+                    </div>
+                    <div id="modal-body" class="text-sm text-slate-700 leading-relaxed space-y-4"></div>
+                </div>
+                <div class="p-4 border-t border-slate-100 bg-slate-50 flex items-center justify-between">
+                    <span class="text-xs text-slate-500">Need specific clinical advice?</span>
+                    <a href="appointment.html" class="bg-primary hover:bg-primary-dark text-white text-xs font-bold px-4 py-2 rounded-lg transition">
+                        Consult a Specialist
+                    </a>
+                </div>
+            </div>
+        </dialog>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/components.js"></script>
+    <script src="assets/js/validation.js"></script>
+    <script src="assets/js/app.js"></script>
+
+    <!-- Handle article click opening modal -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const modal = document.getElementById("article-reader-modal");
+            const modalTitle = document.getElementById("modal-title");
+            const modalCategory = document.getElementById("modal-category");
+            const modalDate = document.getElementById("modal-date");
+            const modalAuthor = document.getElementById("modal-author");
+            const modalBody = document.getElementById("modal-body");
+
+            document.addEventListener("click", (e) => {
+                const link = e.target.closest("a[href^='health-library.html#']");
+                if (link && modal) {
+                    e.preventDefault();
+                    const slug = link.getAttribute("href").split("#")[1];
+                    const articles = (window.AIS_DATA && window.AIS_DATA.articles) || [];
+                    const found = articles.find(a => a.slug === slug);
+                    if (found) {
+                        modalTitle.textContent = found.title;
+                        modalCategory.textContent = found.category;
+                        modalDate.textContent = `${found.date} • ${found.readTime}`;
+                        modalAuthor.textContent = `By ${found.author} (${found.authorRole})`;
+                        modalBody.innerHTML = found.content;
+                        if (window.lucide) window.lucide.createIcons();
+                        modal.showModal();
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="teal">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nursing Station Console — AIS Hospital (V2 Preview)</title>
+    <meta name="description" content="Visual frontend prototype of AIS Hospital Nurse Panel for managing inpatient vitals, medication rounds, ward beds, and patient tasks.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: 'var(--primary)',
+                            dark: 'var(--primary-dark)',
+                            light: 'var(--primary-light)',
+                            50: 'var(--primary-50)'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Manrope', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="assets/css/themes.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body class="bg-slate-100 text-slate-800 antialiased min-h-screen flex flex-col">
+
+    <!-- Top Bar with V2 Notice -->
+    <header class="bg-slate-900 text-white py-2.5 px-4 sm:px-8 border-b border-slate-800 flex items-center justify-between text-xs">
+        <div class="flex items-center gap-3">
+            <a href="index.html" class="flex items-center gap-2 font-bold font-heading text-sm text-white hover:text-primary-light">
+                <div class="w-6 h-6 rounded bg-primary text-white flex items-center justify-center">
+                    <i data-lucide="cross" class="w-4 h-4"></i>
+                </div>
+                <span>AIS Hospital</span>
+            </a>
+            <span class="text-slate-600 hidden sm:inline">|</span>
+            <span class="px-2 py-0.5 rounded bg-blue-500/20 text-blue-300 font-semibold text-[11px] border border-blue-500/30">
+                Nursing Station — Ward 3B (V2 Prototype)
+            </span>
+        </div>
+        <div class="flex items-center gap-4">
+            <span class="text-slate-300 hidden md:inline">Duty Nurse: <strong>Sr. Sarita Yadav (Shift Lead)</strong></span>
+            <a href="login.html" class="text-xs text-red-400 hover:text-red-300 font-semibold flex items-center gap-1">
+                <i data-lucide="log-out" class="w-3.5 h-3.5"></i> Exit Portal
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <div class="flex-1 flex flex-col md:flex-row">
+        <!-- Sidebar Navigation -->
+        <aside class="w-full md:w-64 bg-white border-r border-slate-200/80 p-4 space-y-6">
+            <div class="flex items-center gap-3 p-2 bg-slate-50 rounded-xl border border-slate-100">
+                <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-sm">
+                    SY
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold text-slate-900">Sr. Sarita Yadav</h4>
+                    <span class="text-[11px] text-slate-500">ICU & Step-Down Ward</span>
+                </div>
+            </div>
+
+            <nav class="space-y-1 text-xs font-semibold">
+                <a href="#assigned-patients" class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-primary text-white">
+                    <i data-lucide="user-check" class="w-4 h-4"></i>
+                    <span>Assigned Beds (8)</span>
+                </a>
+                <a href="#vitals" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 hover:text-slate-900">
+                    <i data-lucide="activity" class="w-4 h-4"></i>
+                    <span>Vitals Charting</span>
+                </a>
+                <a href="#tasks" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 hover:text-slate-900">
+                    <i data-lucide="clipboard-list" class="w-4 h-4"></i>
+                    <span>Medication Schedule</span>
+                </a>
+                <a href="#triage" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 hover:text-slate-900">
+                    <i data-lucide="alert-circle" class="w-4 h-4"></i>
+                    <span>Emergency Triage Alert</span>
+                </a>
+                <a href="#roster" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-600 hover:bg-slate-50 hover:text-slate-900">
+                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                    <span>Shift Handover Roster</span>
+                </a>
+            </nav>
+
+            <div class="p-3 bg-amber-50 rounded-xl border border-amber-200 text-[11px] text-amber-800 space-y-1">
+                <span class="font-bold block">V2 — Coming Soon:</span>
+                <p>Real-time telemetry integration with bedside monitors, barcode drug validation, and doctor order sync will be connected in V2.</p>
+            </div>
+        </aside>
+
+        <!-- Main Dashboard Area -->
+        <main class="flex-1 p-4 sm:p-8 space-y-8 overflow-y-auto">
+            <!-- Header Title -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                    <h1 class="text-2xl font-bold text-slate-900 font-heading">Inpatient Nursing Station</h1>
+                    <p class="text-xs text-slate-500">Floor 3 • Wing B • Shift: Day Shift (08:00 AM - 04:00 PM)</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button type="button" onclick="showToast('Recorded round vitals for Ward 3B', 'success')" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-primary hover:bg-primary-dark text-white text-xs font-semibold shadow">
+                        <i data-lucide="plus" class="w-4 h-4"></i> Record Round Vitals
+                    </button>
+                </div>
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm">
+                    <span class="text-xs text-slate-400 font-semibold block uppercase">Assigned Inpatients</span>
+                    <span class="text-2xl font-extrabold text-slate-900 mt-1 block">08</span>
+                    <span class="text-[11px] text-slate-500 font-medium">Beds 301 to 308</span>
+                </div>
+                <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm">
+                    <span class="text-xs text-slate-400 font-semibold block uppercase">Due Medications (12:00 PM)</span>
+                    <span class="text-2xl font-extrabold text-amber-600 mt-1 block">05</span>
+                    <span class="text-[11px] text-amber-700 font-medium">Antibiotics & IV fluids</span>
+                </div>
+                <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm">
+                    <span class="text-xs text-slate-400 font-semibold block uppercase">Critical Vitals Flag</span>
+                    <span class="text-2xl font-extrabold text-red-600 mt-1 block">01</span>
+                    <span class="text-[11px] text-red-500 font-medium">Bed 304 (SpO2 91%)</span>
+                </div>
+                <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm">
+                    <span class="text-xs text-slate-400 font-semibold block uppercase">Planned Discharges</span>
+                    <span class="text-2xl font-extrabold text-emerald-600 mt-1 block">02</span>
+                    <span class="text-[11px] text-emerald-600 font-medium">Discharge summaries ready</span>
+                </div>
+            </div>
+
+            <!-- Inpatient Vitals Roster Table -->
+            <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+                <div class="p-5 border-b border-slate-100 flex items-center justify-between">
+                    <div>
+                        <h3 class="text-base font-bold text-slate-900 font-heading">Ward 3B Patient Roster & Latest Vitals</h3>
+                        <p class="text-xs text-slate-500">Recorded during 10:00 AM clinical round</p>
+                    </div>
+                    <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">All Vitals Logged</span>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs text-slate-600">
+                        <thead class="bg-slate-50 text-[11px] font-bold uppercase text-slate-400 border-b border-slate-100">
+                            <tr>
+                                <th class="p-4">Bed #</th>
+                                <th class="p-4">Patient Name</th>
+                                <th class="p-4">Doctor</th>
+                                <th class="p-4">BP (mmHg)</th>
+                                <th class="p-4">Pulse</th>
+                                <th class="p-4">SpO2</th>
+                                <th class="p-4">Temp</th>
+                                <th class="p-4">Next Due Dose</th>
+                                <th class="p-4 text-right">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr class="hover:bg-slate-50/80">
+                                <td class="p-4 font-mono font-bold text-primary">Bed 301</td>
+                                <td class="p-4 font-semibold text-slate-900">Harish Chandra (64/M)</td>
+                                <td class="p-4">Dr. Aarav Sharma</td>
+                                <td class="p-4 font-semibold">126/82</td>
+                                <td class="p-4">74 bpm</td>
+                                <td class="p-4 text-emerald-600 font-bold">98%</td>
+                                <td class="p-4">98.4°F</td>
+                                <td class="p-4 text-primary font-medium">Inj. Ceftriaxone (12:00 PM)</td>
+                                <td class="p-4 text-right">
+                                    <button type="button" onclick="showToast('Medication marked administered', 'success')" class="px-2.5 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium">Give Med</button>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/80 bg-red-50/30">
+                                <td class="p-4 font-mono font-bold text-red-600">Bed 304</td>
+                                <td class="p-4 font-semibold text-slate-900">Kailash Nath (71/M)</td>
+                                <td class="p-4">Dr. Vikram Singhania</td>
+                                <td class="p-4 font-semibold text-red-600">148/94</td>
+                                <td class="p-4 text-red-600">92 bpm</td>
+                                <td class="p-4 text-red-600 font-bold">91% (Low)</td>
+                                <td class="p-4">99.1°F</td>
+                                <td class="p-4 text-red-600 font-bold">O2 support 3L + Nebulization</td>
+                                <td class="p-4 text-right">
+                                    <button type="button" onclick="showToast('Doctor alerted for Bed 304', 'error')" class="px-2.5 py-1 rounded bg-red-600 hover:bg-red-700 text-white font-medium">Alert Doctor</button>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/80">
+                                <td class="p-4 font-mono font-bold text-primary">Bed 306</td>
+                                <td class="p-4 font-semibold text-slate-900">Aarti Shukla (32/F)</td>
+                                <td class="p-4">Dr. Priya Patel</td>
+                                <td class="p-4 font-semibold">118/76</td>
+                                <td class="p-4">80 bpm</td>
+                                <td class="p-4 text-emerald-600 font-bold">99%</td>
+                                <td class="p-4">98.6°F</td>
+                                <td class="p-4 text-primary font-medium">Post-delivery observation</td>
+                                <td class="p-4 text-right">
+                                    <button type="button" onclick="showToast('Vitals updated for Bed 306', 'info')" class="px-2.5 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium">Chart</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/components.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            if (window.lucide) window.lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

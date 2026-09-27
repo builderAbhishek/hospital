@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="teal">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frequently Asked Questions (FAQ) — AIS Hospital</title>
+    <meta name="description" content="Find answers to common questions about appointments, doctor consultations, 24×7 emergency protocol, insurance billing, and visiting hours at AIS Hospital.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: 'var(--primary)',
+                            dark: 'var(--primary-dark)',
+                            light: 'var(--primary-light)',
+                            50: 'var(--primary-50)'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Manrope', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="assets/css/themes.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body data-page="faq" class="bg-slate-50 text-slate-800 antialiased selection:bg-primary-100 selection:text-primary-dark">
+
+    <div id="emergency-bar-placeholder"></div>
+    <div id="header-placeholder"></div>
+
+    <main id="main-content">
+        <!-- Banner -->
+        <section class="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white py-14 border-b border-slate-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <nav class="flex items-center gap-2 text-xs text-slate-400 mb-3">
+                    <a href="index.html" class="hover:text-white">Home</a>
+                    <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                    <span class="text-white font-medium">FAQs</span>
+                </nav>
+                <div class="max-w-3xl">
+                    <span class="inline-block px-3 py-1 bg-primary text-white text-xs font-bold rounded-full mb-3 uppercase tracking-wider">
+                        Patient Helpdesk
+                    </span>
+                    <h1 class="text-3xl sm:text-4xl font-extrabold font-heading text-white">Frequently Asked Questions</h1>
+                    <p class="text-slate-300 text-sm mt-2">
+                        Get quick answers regarding appointments, admitted patients, health insurance schemes, diagnostics, and visiting policies.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search & Category Filter Section -->
+        <section class="py-12">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+                <!-- Search Box -->
+                <div class="relative">
+                    <i data-lucide="search" class="w-5 h-5 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2"></i>
+                    <input type="text" 
+                           id="faq-search-input" 
+                           placeholder="Type a question or keyword (e.g. appointment, insurance, ICU, emergency)..." 
+                           class="w-full pl-12 pr-4 py-3.5 rounded-2xl border border-slate-200 text-sm text-slate-800 placeholder-slate-400 bg-white shadow-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20">
+                </div>
+
+                <!-- Category Tabs -->
+                <div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+                    <button type="button" data-category="All" class="faq-category-tab px-4 py-2 rounded-xl text-xs font-bold transition bg-primary text-white shrink-0">
+                        All Questions
+                    </button>
+                    <button type="button" data-category="Appointments" class="faq-category-tab px-4 py-2 rounded-xl text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:text-primary transition shrink-0">
+                        Appointments
+                    </button>
+                    <button type="button" data-category="Emergency" class="faq-category-tab px-4 py-2 rounded-xl text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:text-primary transition shrink-0">
+                        Emergency Care
+                    </button>
+                    <button type="button" data-category="Doctors" class="faq-category-tab px-4 py-2 rounded-xl text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:text-primary transition shrink-0">
+                        Doctors
+                    </button>
+                    <button type="button" data-category="Billing" class="faq-category-tab px-4 py-2 rounded-xl text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:text-primary transition shrink-0">
+                        Billing & Insurance
+                    </button>
+                    <button type="button" data-category="Diagnostics" class="faq-category-tab px-4 py-2 rounded-xl text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:text-primary transition shrink-0">
+                        Diagnostics & Lab
+                    </button>
+                    <button type="button" data-category="Visitors" class="faq-category-tab px-4 py-2 rounded-xl text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:text-primary transition shrink-0">
+                        Visitors Policy
+                    </button>
+                    <button type="button" data-category="General" class="faq-category-tab px-4 py-2 rounded-xl text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:text-primary transition shrink-0">
+                        General
+                    </button>
+                </div>
+
+                <!-- FAQ Accordion Container -->
+                <div class="space-y-3 pt-4" id="faq-accordion-container">
+                    <!-- Populated dynamically via app.js -->
+                </div>
+
+                <!-- Help CTA Card -->
+                <div class="mt-12 bg-white rounded-2xl border border-slate-200/80 p-6 text-center space-y-3 shadow-sm">
+                    <h3 class="text-base font-bold text-slate-900 font-heading">Still Have Questions?</h3>
+                    <p class="text-xs text-slate-500 max-w-md mx-auto">
+                        Our patient reception and customer care executives are always ready to assist you.
+                    </p>
+                    <div class="flex flex-wrap justify-center gap-3 pt-2">
+                        <a href="contact.html" class="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-slate-900 text-white font-semibold text-xs hover:bg-slate-800 transition">
+                            <i data-lucide="mail" class="w-3.5 h-3.5"></i>
+                            <span>Contact Care Desk</span>
+                        </a>
+                        <a href="tel:+9118001234567" class="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-primary text-white font-semibold text-xs hover:bg-primary-dark transition">
+                            <i data-lucide="phone" class="w-3.5 h-3.5"></i>
+                            <span>Call 1800 123 4567</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/components.js"></script>
+    <script src="assets/js/validation.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
